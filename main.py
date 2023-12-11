@@ -21,6 +21,9 @@ def add_contact(command):
 
     if name in contacts.keys():
         return f'Contact with name {name} already exists'
+    
+    elif phone in contacts.values():
+        return f'Contact with phone {phone} already exists'
 
     contacts[name] = phone
     return f"Added {name} with phone number {phone}"
@@ -33,6 +36,10 @@ def change_contact(command):
 
     if name not in contacts.keys():
         return f'Contact with name {name} does not exist'
+    
+    elif phone in contacts.values():
+        return f'Contact with phone {phone} already exists'
+    
     else:
         contacts[name] = phone
         return f"Changed phone number for {name} to {phone}"
