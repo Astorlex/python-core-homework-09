@@ -71,11 +71,11 @@ def main():
 
         if user_input == "hello":
             print("How can I help you?")
-        elif user_input_lower.startswith("add"):
+        elif user_input_lower.split(' ')[0] == "add":
             print(add_contact(user_input))
-        elif user_input_lower.startswith("change"):
+        elif user_input_lower.split(' ')[0] == "change":
             print(change_contact(user_input))
-        elif user_input_lower.startswith("phone"):
+        elif user_input_lower.split(' ')[0] == "phone":
             print(get_phone(user_input))
         elif user_input_lower == "show all":
             all_contacts = show_all()
