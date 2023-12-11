@@ -10,7 +10,7 @@ def input_error(func):
         except ValueError:
             return "Give me name and phone please"
         except IndexError:
-            return "Invalid command. Please try again."
+            return "Invalid command. Please try again"
     return wrapper
 
 
@@ -20,7 +20,7 @@ def add_contact(command):
     name, phone = parts[1], parts[2]
 
     if name in contacts.keys():
-        return f'Contact with name {name} already exists.'
+        return f'Contact with name {name} already exists'
 
     contacts[name] = phone
     return f"Added {name} with phone number {phone}"
@@ -30,8 +30,12 @@ def add_contact(command):
 def change_contact(command):
     parts = command.split(' ', 2)
     name, phone = parts[1], parts[2]
-    contacts[name] = phone
-    return f"Changed phone number for {name} to {phone}"
+
+    if name not in contacts.keys():
+        return f'Contact with name {name} does not exist'
+    else:
+        contacts[name] = phone
+        return f"Changed phone number for {name} to {phone}"
 
 
 @input_error
